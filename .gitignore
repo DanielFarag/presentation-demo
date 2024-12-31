@@ -1,1 +1,6 @@
 .env
+*/node_modules
+__commmands__
+.vscode
+package-lock.json
+Makefile
