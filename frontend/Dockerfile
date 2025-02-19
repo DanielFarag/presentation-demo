@@ -1,11 +1,19 @@
-FROM node:20
+FROM node:20-alpine as base
 
-WORKDIR /app
+WORKDIR /base
 
-COPY package*.json ./
+COPY package*.json .
 
 RUN npm install
 
 COPY . .
 
-CMD ["npm", "run", "build"]
+RUN npm run build
+
+
+
+FROM alpine
+
+WORKDIR /app
+
+COPY --from=base /base/dist/frontend/browser /app
