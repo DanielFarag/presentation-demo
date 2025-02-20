@@ -13,6 +13,9 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}     
     volumes:
       - mysql-data:/var/lib/mysql      
+    networks:
+      - database
+      - backend
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -26,6 +29,8 @@ services:
       - "8080:80"    
     depends_on:
       - mysql        
+    networks:
+      - database
 
   backend:
     build:
@@ -41,6 +46,8 @@ services:
     
     depends_on:
       - mysql
+    networks:
+      - backend
 
   frontend:
     build:
@@ -52,6 +59,8 @@ services:
       - frontend-dist:/app
     depends_on:
       - backend
+    networks:
+      - frontend
 
   server:
     image: nginx
@@ -64,7 +73,15 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - frontend
+    networks:
+      - frontend
+      - backend
 
 volumes:
   mysql-data:
   frontend-dist:
+
+networks:
+  backend:
+  frontend:
+  database:
