@@ -48,13 +48,13 @@ This will start all services in detached mode.
 - **Networks:** `database`
 
 ### Backend
-- **Build Context:** `./backend`
+- **Image:** `ghcr.io/danielfarag/project1-backend-node:latest`
 - **Container Name:** `presentation_backend`
 - **Depends on:** MySQL
 - **Networks:** `backend`
 
 ### Frontend
-- **Build Context:** `./frontend`
+- **Image:** `ghcr.io/danielfarag/project1-frontend-angular:latest`
 - **Container Name:** `presentation_angular`
 - **Depends on:** Backend
 - **Persistent Volume:** `frontend-dist`

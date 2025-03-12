@@ -33,9 +33,7 @@ services:
       - database
 
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile 
+    image: ghcr.io/danielfarag/project1-backend-node:latest
     container_name: presentation_backend
     restart: unless-stopped
     environment:
@@ -50,9 +48,7 @@ services:
       - backend
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile 
+    image: ghcr.io/danielfarag/project1-frontend-angular:latest
     container_name: presentation_angular
     restart: on-failure
     volumes:
