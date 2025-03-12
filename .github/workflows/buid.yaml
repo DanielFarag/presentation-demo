@@ -20,10 +20,10 @@ jobs:
                 password: ${{ secrets.AUTH_TOKEN }}
 
             - name: Build Backend Docker image
-              run: docker build -t ghcr.io/danielfarag/project1-backend-note:latest ./backend
+              run: docker build -t ghcr.io/danielfarag/project1-backend-node:latest ./backend
             
             - name: Push Backend Docker image to GitHub Container Registry
-              run: docker push ghcr.io/danielfarag/project1-backend-note:latest
+              run: docker push ghcr.io/danielfarag/project1-backend-node:latest
             
             - name: Build Frontend Docker image
               run: docker build -t ghcr.io/danielfarag/project1-frontend-angular:latest ./frontend
