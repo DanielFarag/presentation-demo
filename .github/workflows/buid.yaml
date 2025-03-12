@@ -19,8 +19,14 @@ jobs:
                 username: danielfarag
                 password: ${{ secrets.AUTH_TOKEN }}
 
-            - name: Build Docker image
-              run: docker build -t ghcr.io/danielfarag/project1-node:latest ./backend
+            - name: Build Backend Docker image
+              run: docker build -t ghcr.io/danielfarag/project1-backend-note:latest ./backend
+            
+            - name: Push Backend Docker image to GitHub Container Registry
+              run: docker push ghcr.io/danielfarag/project1-backend-note:latest
+            
+            - name: Build Frontend Docker image
+              run: docker build -t ghcr.io/danielfarag/project1-frontend-angular:latest ./frontend
           
-            - name: Push Docker image to GitHub Container Registry
-              run: docker push ghcr.io/danielfarag/project1-angular:latest ./frontend
+            - name: Push Frontend Docker image to GitHub Container Registry
+              run: docker push ghcr.io/danielfarag/project1-frontend-angular:latest
